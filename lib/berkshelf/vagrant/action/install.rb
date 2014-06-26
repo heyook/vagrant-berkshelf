@@ -28,7 +28,7 @@ module Berkshelf
           opts.delete(:only) if opts[:only].empty?
           env[:berkshelf].berksfile = Berkshelf::Berksfile.from_file(berksfile_path(env), opts)
 
-          if chef_solo?(env)
+          if chef_solo?(env) || chef_client?(env)
             install(env)
           end
 
